@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    }
+
+    :root {
+      color-scheme: dark;
+    }
+
+    .app-container {
+      width: 100%;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #13151a, #1f2937);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .penguin {
+      width: 40px;
+      height: 40px;
+    }
+
+    .title-badge {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .badges {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      background: rgba(74, 144, 226, 0.2);
+      border-radius: 12px;
+      color: #4a90e2;
+    }
+
+    .quick-actions {
+      padding: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      background: rgba(0, 0, 0, 0.2);
+      scrollbar-width: none;
+    }
+
+    .quick-actions::-webkit-scrollbar {
+      display: none;
+    }
+
+    .action-btn {
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 0.875rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .action-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .chat-area {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .message {
+      padding: 1rem;
+      border-radius: 12px;
+      max-width: 85%;
+      line-height: 1.5;
+    }
+
+    .bot-message {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-right: auto;
+    }
+
+    .user-message {
+      background: rgba(74, 144, 226, 0.1);
+      border: 1px solid rgba(74, 144, 226, 0.2);
+      margin-left: auto;
+    }
+
+    .input-area {
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.2);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 0.875rem;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: rgba(74, 144, 226, 0.5);
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      background: #4a90e2;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    button:hover {
+      background: #357abd;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+      <div class="logo-section">
+        <svg class="penguin" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="penguinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#4a90e2"/>
+              <stop offset="100%" style="stop-color:#357abd"/>
+            </linearGradient>
+          </defs>
+          <path d="M50 10 C20 10 20 50 20 80 C20 90 80 90 80 80 C80 50 80 10 50 10" fill="url(#penguinGradient)"/>
+          <path d="M35 30 C35 30 50 60 65 30" fill="white"/>
+          <circle cx="40" cy="25" r="5" fill="black"/>
+          <circle cx="60" cy="25" r="5" fill="black"/>
+          <path d="M48 35 L52 35 C50 40 50 40 48 35" fill="orange"/>
+        </svg>
+        <div class="title-badge">
+          <span class="title">PENGU AI</span>
+          <div class="badges">
+            <span class="badge">Crypto Expert</span>
+            <span class="badge">24/7 Active</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="quick-actions">
+      <div class="action-btn">💰 Bitcoin</div>
+      <div class="action-btn">⚡ Ethereum</div>
+      <div class="action-btn">🏦 DeFi</div>
+      <div class="action-btn">🎨 NFTs</div>
+      <div class="action-btn">📈 Trading</div>
+      <div class="action-btn">🔒 Security</div>
+    </div>
+
+    <div class="chat-area">
+      <div class="message bot-message">
+        Hi! I'm PENGU AI, your crypto expert. I can help with:
+        • Cryptocurrency analysis
+        • DeFi protocols & strategies
+        • NFT markets
+        • Trading insights
+        • Blockchain technology
+        • Security best practices
+
+        What would you like to know?
+      </div>
+    </div>
+
+    <div class="input-area">
+      <input type="text" placeholder="Ask about crypto, trading, or blockchain..." id="userInput">
+      <button id="sendButton">Send</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const input = document.getElementById('userInput');
+      const sendButton = document.getElementById('sendButton');
+      const chatArea = document.querySelector('.chat-area');
+      const quickActions = document.querySelectorAll('.action-btn');
+
+      function handleChat() {
+        const message = input.value.trim();
+        if (message === '') return;
+
+        // Add user message
+        addMessage('user', message);
+
+        // Generate response
+        const response = generateResponse(message.toLowerCase());
+
+        // Simulate typing delay
+        setTimeout(() => {
+          addMessage('bot', response);
+          chatArea.scrollTop = chatArea.scrollHeight;
+        }, 1000);
+
+        input.value = '';
+      }
+
+      function addMessage(type, text) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${type}-message`;
+        messageDiv.textContent = text;
+        chatArea.appendChild(messageDiv);
+        chatArea.scrollTop = chatArea.scrollHeight;
+      }
+
+      function generateResponse(message) {
+        if (message.includes('bitcoin')) {
+          return "Bitcoin (BTC) is the leading cryptocurrency, known for its fixed supply of 21M coins and proof-of-work consensus mechanism. It's considered digital gold and a store of value.";
+        } else if (message.includes('ethereum')) {
+          return "Ethereum is a programmable blockchain that enables smart contracts, DeFi applications, and NFTs. It recently transitioned to Proof of Stake consensus.";
+        } else if (message.includes('defi')) {
+          return "DeFi (Decentralized Finance) offers financial services without intermediaries. This includes lending, borrowing, trading, and yield farming on blockchain platforms.";
+        } else {
+          return "I can help you understand cryptocurrencies, DeFi, NFTs, trading strategies, and blockchain security. What specific aspect interests you?";
+        }
+      }
+
+      // Event listeners
+      sendButton.addEventListener('click', handleChat);
+      input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleChat();
+      });
+
+      quickActions.forEach(button => {
+        button.addEventListener('click', () => {
+          input.value = button.textContent;
+          handleChat();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
